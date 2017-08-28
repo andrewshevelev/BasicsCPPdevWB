@@ -1,17 +1,15 @@
 #include <iostream>
 #include <map>
 #include <string>
+#include <set>
 
 using namespace std;
 
 int main() {
-	map<int, string> m = { { 1, "odd" },{ 2, "even" },{ 1, "one" } };
-	m[2] = "two";
-	m.erase(1);
-	m[3] = "three";
-	m.erase(4);
-	m[5] = "five";
-	cout << m.size();
+	set<int> s = { 4, 2, 1, 2 };
+	s.erase(2);
+	s.insert(1);
+	cout << s.size();
 
 	return 0;
 }

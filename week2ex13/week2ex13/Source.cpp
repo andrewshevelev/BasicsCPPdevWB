@@ -10,15 +10,15 @@ STOPS_FOR_BUS bus — вывести названия всех остановок маршрута bus со списком
 автобусов, на которые можно пересесть на каждой из остановок.
 ALL_BUSES — вывести список всех маршрутов с остановками.
 */
-#include <iostream>
+//#include <iostream>
 #include <map>
 #include <string>
 #include <vector>
-//#include <fstream>
+#include <fstream>
 using namespace std;
 
-//ifstream cin;
-//ofstream cout;
+ifstream cin;
+ofstream cout;
 
 
 void AllBuses(const map<string, vector<string>>& busmap) {
@@ -33,7 +33,7 @@ void AllBuses(const map<string, vector<string>>& busmap) {
 			}
 			cout << endl;
 		}
-		cout << endl;
+		//cout << endl;
 	}
 }
 
@@ -85,8 +85,8 @@ int main() {
 	string command, s1, s2;
 	map<string, vector<string>> busmap;
 	
-	/*cin.open("test1.txt");
-	cout.open("output.txt");*/
+	cin.open("test1.txt");
+	cout.open("output.txt");
 	
 	cin >> q;
 	for (q; q > 0; --q) {
@@ -112,8 +112,8 @@ int main() {
 		}
 	}
 
-	/*cin.close();
-	cout.close();*/
+	cin.close();
+	cout.close();
 
 	return 0;
 }

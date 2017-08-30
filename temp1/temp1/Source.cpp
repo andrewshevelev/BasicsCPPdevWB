@@ -2,14 +2,30 @@
 #include <map>
 #include <string>
 #include <set>
+#include <vector>
 
 using namespace std;
 
-int main() {
-	set<int> s = { 4, 2, 1, 2 };
-	s.erase(2);
-	s.insert(1);
-	cout << s.size();
+string GetPositivity(int x) {
+	return x > 0 ? "positive"
+		: (x == 0 ? "zero" : "negative");
+}
 
+int main() {
+
+	{
+		vector<string> w;
+		w.push_back("One");
+		{
+			w.push_back("Two");
+			{
+				w.push_back("Three");
+			}
+		}
+		for (auto s : w) {
+			cout << s;
+		}
+	}
+	
 	return 0;
 }

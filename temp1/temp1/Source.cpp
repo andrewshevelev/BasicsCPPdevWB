@@ -6,26 +6,41 @@
 
 using namespace std;
 
-string GetPositivity(int x) {
-	return x > 0 ? "positive"
-		: (x == 0 ? "zero" : "negative");
-}
-
-int main() {
-
-	{
-		vector<string> w;
-		w.push_back("One");
-		{
-			w.push_back("Two");
-			{
-				w.push_back("Three");
+class Circus {
+public:
+	int CountAnimalTypes() {
+		int animal_type_count = 0;
+		for (const auto& item : animals_by_type){
+			if (HasAnimalType(item.first)) {
+				++animal_type_count;
 			}
 		}
-		for (auto s : w) {
-			cout << s;
-		}
+		return animal_type_count;
 	}
+	int ComputeAnimalCount() {
+		int animal_count = 0;
+		for (const auto& item : animals_by_type) {
+			animal_count += item.second.size();
+		}
+		return animal_count;
+	}
+	void AddAnimal(const string& type, const string& name) {
+		animals_by_type[type].insert(name);
+	}
+	void RetireAnimal(const string& type, const string& name) {
+		animals_by_type[type].erase(name);
+	}
+
+private:
+	bool HasAnimalType(const string& type) const{
+		return !animals_by_type[type].empty();
+	}
+
+	map<string, set<string>> animals_by_type;
+};
+int main() {
+
+
 	
 	return 0;
 }

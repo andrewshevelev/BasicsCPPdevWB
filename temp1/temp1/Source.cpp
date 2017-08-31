@@ -1,46 +1,41 @@
-#include <iostream>
-#include <map>
 #include <string>
-#include <set>
+#include <iostream>
 #include <vector>
-
 using namespace std;
 
-class Circus {
+class Weather {
 public:
-	int CountAnimalTypes() {
-		int animal_type_count = 0;
-		for (const auto& item : animals_by_type){
-			if (HasAnimalType(item.first)) {
-				++animal_type_count;
-			}
-		}
-		return animal_type_count;
+	Weather(const string& new_state, int new_temperature) {
+		state = new_state;
+		temperature = new_temperature;
+		cout << 'c';
 	}
-	int ComputeAnimalCount() {
-		int animal_count = 0;
-		for (const auto& item : animals_by_type) {
-			animal_count += item.second.size();
-		}
-		return animal_count;
+	~Weather() {
+		cout << 'd';
 	}
-	void AddAnimal(const string& type, const string& name) {
-		animals_by_type[type].insert(name);
-	}
-	void RetireAnimal(const string& type, const string& name) {
-		animals_by_type[type].erase(name);
-	}
-
 private:
-	bool HasAnimalType(const string& type) const{
-		return !animals_by_type[type].empty();
-	}
-
-	map<string, set<string>> animals_by_type;
+	string state;
+	int temperature;
 };
+
+Weather GetMayWeather(int day) {
+	if (day == 9) {
+		cout << 'b';
+		return { "clear", 10 };
+	}
+	else {
+		cout << 'b';
+		return { "cloudy", 10 };
+	}
+}
+
 int main() {
-
-
-	
+	vector<int> days(2, 1);
+	for (int day : days) {
+		cout << 'a';
+		Weather weather = GetMayWeather(day);
+		cout << 'e';
+	}
+	cout << 'f' << endl;
 	return 0;
 }

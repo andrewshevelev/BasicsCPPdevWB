@@ -9,7 +9,7 @@ public:
 	}
 	Rational(int numerator_, int denominator_) {
 		if (denominator_ == 0) {
-			throw invalid_argument("denominator must not be 0");
+			throw invalid_argument("Invalid argument");
 		}
 		else if (numerator_ == 0) {
 			numerator = 0;
@@ -88,7 +88,7 @@ Rational operator*(const Rational& lhs, const Rational& rhs) {
 
 Rational operator/(const Rational& lhs, const Rational& rhs) {
 	if (rhs.Numerator() == 0) {
-		throw domain_error("domain error");
+		throw domain_error("Division by zero");
 	}	
 	return Rational(lhs.Numerator() * rhs.Denominator(),
 		lhs.Denominator() * rhs.Numerator());
@@ -114,22 +114,29 @@ bool operator<(const Rational& lhs, const Rational& rhs) {
 
 int main() {
 	try {
-		Rational r(1, 0);
-		cout << "Doesn't throw in case of zero denominator" << endl;
-		return 1;
+		Rational r1, r2;
+		char c;
+		if (cin >> r1 >> c >> r2) {
+			if (c == '/') {
+				cout << r1 / r2;
+			}
+			else if (c == '*') {
+				cout << r1 * r2;
+			}
+			else if (c == '+') {
+				cout << r1 + r2;
+			}
+			else if (c == '-') {
+				cout << r1 - r2;
+			}
+			else {
+				cout << "Invalid argument";
+			}
+		}			
 	}
-	catch (invalid_argument& ex) {
+	catch (exception& ex) {
 		cout << ex.what() << endl;
 	}
 
-	try {
-		auto x = Rational(1, 2) / Rational(0, 1);
-		cout << "Doesn't throw in case of division by zero" << endl;
-		return 2;
-	}
-	catch (domain_error&) {
-	}
-
-	cout << "OK" << endl;
 	return 0;
 }
